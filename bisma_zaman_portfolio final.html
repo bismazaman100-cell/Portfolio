@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en" spellcheck="false">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bisma Zaman — Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f2eb;
+    --bg2: #edeae2;
+    --ink: #1a1814;
+    --ink2: #4a463e;
+    --ink3: #8a857a;
+    --accent: #c4451e;
+    --accent2: #2d6a4f;
+    --accent3: #1a4a7a;
+    --border: #d8d3c8;
+    --white: #faf8f4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { -webkit-text-decoration: none; }
+  [spellcheck], p, li, div, span, h1, h2, h3, h4 {
+    -webkit-spell-checking: none;
+    spell-checking: none;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Syne', sans-serif;
+    font-size: 16.5px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-thumb { background: var(--accent); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.1rem 3rem;
+    background: rgba(245,242,235,0.93);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink2);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    padding: 6rem 3rem 4rem 3rem;
+    display: flex; flex-direction: column; justify-content: center;
+    border-right: 1px solid var(--border);
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 12px; border-radius: 2px;
+    margin-bottom: 2rem;
+    width: fit-content;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .hero-name em { font-style: normal; color: var(--ink); }
+  .hero-bio {
+    font-size: 15px; color: var(--ink2); line-height: 1.8;
+    max-width: 480px; margin-bottom: 2.5rem;
+    text-align: justify;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    padding: 12px 28px; border-radius: 2px;
+    transition: all 0.2s; cursor: pointer;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); border: 1px solid var(--ink); }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+  .btn-outline:hover { border-color: var(--ink); }
+
+  .hero-right {
+    padding: 6rem 3rem 4rem 3rem;
+    display: flex; flex-direction: column; justify-content: center;
+    gap: 2rem;
+  }
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .stat-box {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--white);
+    border-radius: 4px;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; line-height: 1; color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); }
+  .hero-tools {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--white);
+    border-radius: 4px;
+  }
+  .tools-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 1rem; }
+  .tools-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tool-chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 2px; color: var(--ink2);
+    background: var(--bg2);
+  }
+
+  /* SECTION SHARED */
+  section { padding: 5rem 3rem; }
+  section:nth-child(even) { background: var(--white); }
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--accent); font-weight: 400;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 400;
+    color: var(--ink); letter-spacing: -0.01em;
+  }
+  .max-w { max-width: 1100px; margin: 0 auto; }
+
+  /* EXPERIENCE */
+  .exp-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 0; }
+  .exp-item {
+    display: contents;
+  }
+  .exp-item .exp-meta {
+    padding: 2rem 2rem 2rem 0;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+  .exp-item .exp-body {
+    padding: 2rem 0 2rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--ink3); margin-bottom: 0.5rem;
+  }
+  .exp-title {
+    font-size: 15px; font-weight: 600; color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  .exp-company { font-size: 13px; color: var(--accent); font-weight: 500; }
+  .exp-desc { font-size: 15px; color: var(--ink2); margin-bottom: 1rem; line-height: 1.8; }
+  .exp-desc ul { padding-left: 1.2rem; }
+  .exp-desc li { margin-bottom: 0.4rem; }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .proj-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .proj-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s;
+  }
+  .proj-card:hover::before { transform: scaleY(1); }
+  .proj-card:hover { border-color: var(--ink2); transform: translateY(-2px); }
+  .proj-category {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .proj-title { font-size: 15px; font-weight: 600; margin-bottom: 0.5rem; }
+  .proj-desc { font-size: 14px; color: var(--ink2); line-height: 1.7; margin-bottom: 1rem; }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .proj-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; padding: 2px 8px;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 2px; color: var(--ink3);
+  }
+
+  /* SKILLS */
+  .skills-layout { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+  .skill-group {}
+  .skill-group-title {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink3);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .skill-name { color: var(--ink2); font-size: 14px; }
+  .skill-bar-wrap {
+    width: 80px; height: 3px; background: var(--bg2);
+    border-radius: 2px; overflow: hidden;
+  }
+  .skill-bar { height: 100%; background: var(--accent); border-radius: 2px; }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .edu-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.75rem;
+  }
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; margin-bottom: 0.4rem;
+  }
+  .edu-uni { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 0.25rem; }
+  .edu-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--ink3);
+  }
+
+  /* PUBLICATIONS */
+  .pub-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .pub-item {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg);
+    border-left: 3px solid var(--accent2);
+  }
+  .pub-title { font-size: 14px; font-weight: 600; margin-bottom: 0.4rem; line-height: 1.5; }
+  .pub-authors { font-size: 12px; color: var(--ink3); margin-bottom: 0.3rem; }
+  .pub-journal { font-size: 12px; color: var(--accent2); font-style: italic; }
+  .pub-doi { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink3); margin-top: 0.5rem; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--white);
+  }
+  .contact-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--bg2); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .contact-detail-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 2px; }
+  .contact-detail-val { font-size: 15px; color: var(--ink2); }
+  .contact-msg {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; line-height: 1.4;
+    font-style: italic;
+    color: var(--ink2);
+    border-left: 3px solid var(--accent);
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .contact-sub { font-size: 14px; color: var(--ink3); line-height: 1.7; text-align: justify; }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--ink3);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 5rem 1.5rem 2rem; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero-right { padding: 2rem 1.5rem; }
+    section { padding: 3rem 1.5rem; }
+    .exp-grid { grid-template-columns: 1fr; }
+    .exp-item .exp-meta { border-right: none; padding: 1.5rem 0 0.5rem; }
+    .exp-item .exp-body { padding: 0.5rem 0 1.5rem; }
+    .skills-layout { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body spellcheck="false">
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Portfolio</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-left">
+    <span class="hero-tag">Data Analyst · Lahore, Pakistan</span>
+    <h1 class="hero-name">Bisma <em>Zaman</em></h1>
+    <p class="hero-bio">
+      I am a devoted data analyst with a strong background in statistics. With master’s in applied Statistics and applied experience in different tools such as SPSS, Excel, STATA, Power BI/ Tableau, R and EViews. I excel in data analysis, predictive analysis, sampling techniques, time series analysis, statistical modeling and data visualization. I am passionate about leveraging data to drive planned decision- making, supporting supportable solutions and constantly seeking opportunities to apply my analytical skills to solve complex problems. My goal is to contribute to the success of an organization by providing actionable insights and implementing effective data-driven strategies. With a solid background in statistical analysis and data visualization, I am eager to apply my expertise to the growth and success of the organization.
+    </p>
+    <div class="hero-cta">
+      <a href="#experience" class="btn btn-primary">View Experience</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Publications</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Tools Mastered</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">200+</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+    </div>
+    <div class="hero-tools">
+      <p class="tools-label">Core Tools</p>
+      <div class="tools-grid">
+        <span class="tool-chip">Python</span>
+        <span class="tool-chip">R / R-Shiny App</span>
+        <span class="tool-chip">Power BI</span>
+        <span class="tool-chip">Tableau</span>
+        <span class="tool-chip">SPSS</span>
+        <span class="tool-chip">STATA</span>
+        <span class="tool-chip">Excel</span>
+        <span class="tool-chip">EViews</span>
+        <span class="tool-chip">SQL</span>
+        <span class="tool-chip">R Markdown</span>
+        <span class="tool-chip">Nvivo</span>
+        <span class="tool-chip">SPSS AMOS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="max-w">
+    <div class="section-header fade-in">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Work Experience</h2>
+    </div>
+    <div class="exp-grid">
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <div class="exp-period">Dec 2024 – Dec 2025</div>
+          <div class="exp-title">IT / Data Support Officer</div>
+          <div class="exp-company">Social Welfare & Bait Ul Maal Punjab</div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-desc">
+            <ul>
+              <li>Collected, cleaned and organized data from departmental programs and campaigns.</li>
+              <li>Prepared monthly and annual reports using R Studio, Power BI and Tableau to provide insights for decision-making.</li>
+              <li>Generated monthly reports on "Trafficking in Person" by using R-Studio.</li>
+              <li>Trained staff on IT tools and data management systems.</li>
+              <li>Provided technical support to ensure smooth functioning of IT systems across departments.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <div class="exp-period">June 2022 – April 2024</div>
+          <div class="exp-title">Data Analyst</div>
+          <div class="exp-company">Kot Enterprises, Lahore</div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-desc">
+            <ul>
+              <li>Analyzed complex datasets to extract meaningful patterns and actionable insights using Power BI and Tableau.</li>
+              <li>Identified emerging trends and translated them into strategic recommendations.</li>
+              <li>Maintained meticulous attention to detail ensuring accuracy and reliability of analyses.</li>
+              <li>Contributed significantly to multiple team-driven projects through data insights and reporting.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item fade-in">
+        <div class="exp-meta">
+          <div class="exp-period">Jan 2022 – Present</div>
+          <div class="exp-title">Freelance Data Analyst</div>
+          <div class="exp-company">Self-Employed, Lahore</div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-desc">
+            <ul>
+              <li>Excel in data cleaning and validation using advanced Excel functions.</li>
+              <li>Conduct analysis on large datasets, identifying trends and patterns for strategic insights.</li>
+              <li>Create visually attractive dashboards using Tableau and Power BI.</li>
+              <li>Conduct time series analysis to forecast demand and improve inventory management.</li>
+              <li>Employ Python/R for data manipulation and statistical analysis.</li>
+              <li>Proficient in report writing, research writing and article writing to support decision-making processes.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="max-w">
+    <div class="section-header fade-in">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Featured Projects</h2>
+    </div>
+    <div class="projects-grid">
+
+      <div class="proj-card fade-in">
+        <div class="proj-category">SPSS · Survey Analysis</div>
+        <div class="proj-title">Politicization of 2017 Census, Lahore</div>
+        <div class="proj-desc">Survey-based analysis examining political influences on census data collection and reporting in Lahore.</div>
+        <div class="proj-tags"><span class="proj-tag">IBM SPSS</span><span class="proj-tag">Survey Design</span><span class="proj-tag">Descriptive Stats</span></div>
+      </div>
+
+      <div class="proj-card fade-in">
+        <div class="proj-category">SPSS · Health Analytics</div>
+        <div class="proj-title">COVID-19 Knowledge & Anxiety Study</div>
+        <div class="proj-desc">Analysis of knowledge, attitudes and anxiety towards COVID-19 among university students in Riyadh, Saudi Arabia.</div>
+        <div class="proj-tags"><span class="proj-tag">IBM SPSS</span><span class="proj-tag">Hypothesis Testing</span><span class="proj-tag">Cross-tabulation</span></div>
+      </div>
+
+      <div class="proj-card fade-in">
+        <div class="proj-category">STATA · Econometrics</div>
+        <div class="proj-title">Fast-Food Industry Case Study (NJ & PA)</div>
+        <div class="proj-desc">Replicated the Card & Krueger study comparing employment effects across states. Compared multiple regression models.</div>
+        <div class="proj-tags"><span class="proj-tag">STATA</span><span class="proj-tag">Regression</span><span class="proj-tag">Panel Data</span></div>
+      </div>
+
+      <div class="proj-card fade-in">
+        <div class="proj-category">R / R-Shiny · Dashboard</div>
+        <div class="proj-title">R-Shiny Interactive Dashboard</div>
+        <div class="proj-desc">Built a full Shiny app with header, sidebar and body framework. Performed revenue analysis on Nielsen Designated Marketing Areas (DMA).</div>
+        <div class="proj-tags"><span class="proj-tag">R-Shiny</span><span class="proj-tag">ggplot2</span><span class="proj-tag">R Markdown</span></div>
+      </div>
+
+      <div class="proj-card fade-in">
+        <div class="proj-category">Power BI · Business Intelligence</div>
+        <div class="proj-title">Global Super Store & E-Commerce Dashboards</div>
+        <div class="proj-desc">Built dashboards on global super store analysis, ecommerce sales performance, and sales & traffic metrics using Power BI.</div>
+        <div class="proj-tags"><span class="proj-tag">Power BI</span><span class="proj-tag">DAX</span><span class="proj-tag">KPI Tracking</span></div>
+      </div>
+
+      <div class="proj-card fade-in">
+        <div class="proj-category">Tableau · Analytics</div>
+        <div class="proj-title">UK Premium Bond & Ship Maintenance</div>
+        <div class="proj-desc">Created interactive Tableau dashboards for UK premium bond performance tracking and ship maintenance operational analytics.</div>
+        <div class="proj-tags"><span class="proj-tag">Tableau</span><span class="proj-tag">Data Viz</span><span class="proj-tag">Calculated Fields</span></div>
+      </div>
+
+      <div class="proj-card fade-in">
+        <div class="proj-category">Power BI · Customer Analytics</div>
+        <div class="proj-title">Customer Booking Behavior Dashboard</div>
+        <div class="proj-desc">Analyzed customer behavior patterns for trip bookings, uncovering trends in booking frequency, preferences and seasonal demand.</div>
+        <div class="proj-tags"><span class="proj-tag">Power BI</span><span class="proj-tag">Customer Analytics</span><span class="proj-tag">Segmentation</span></div>
+      </div>
+
+      <div class="proj-card fade-in">
+        <div class="proj-category">SPSS AMOS · SEM</div>
+        <div class="proj-title">Structural Equation Modeling (SEM)</div>
+        <div class="proj-desc">Applied SEM using SPSS AMOS to model complex multivariate relationships, path analysis and confirmatory factor analysis.</div>
+        <div class="proj-tags"><span class="proj-tag">SPSS AMOS</span><span class="proj-tag">SEM</span><span class="proj-tag">Path Analysis</span><span class="proj-tag">CFA</span></div>
+      </div>
+
+      <div class="proj-card fade-in">
+        <div class="proj-category">R · Education Economics</div>
+        <div class="proj-title">Female Education & Economic Impact</div>
+        <div class="proj-desc">Statistical study analyzing how female education positively impacts a country's economy using regression, logistic models and hypothesis testing.</div>
+        <div class="proj-tags"><span class="proj-tag">R</span><span class="proj-tag">Logistic Regression</span><span class="proj-tag">ggplot2</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="max-w">
+    <div class="section-header fade-in">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Skills & Expertise</h2>
+    </div>
+    <div class="skills-layout">
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">Statistical Tools</div>
+        <div class="skill-item"><span class="skill-name">IBM SPSS</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">STATA</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">EViews</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">R / R-Shiny</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+      </div>
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">Visualization & BI</div>
+        <div class="skill-item"><span class="skill-name">Power BI</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Tableau</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Excel (Advanced)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">ggplot2</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">R Markdown</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+      </div>
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">Analytical Methods</div>
+        <div class="skill-item"><span class="skill-name">Time Series Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Predictive Modeling</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Statistical Modeling</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Sampling Techniques</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">SEM / Path Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="max-w">
+    <div class="section-header fade-in">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card fade-in">
+        <div class="edu-degree">Master in Applied Statistics</div>
+        <div class="edu-uni">University of Management and Technology</div>
+        <div class="edu-period">Sep 2019 – Oct 2021 · Lahore, Pakistan</div>
+      </div>
+      <div class="edu-card fade-in">
+        <div class="edu-degree">Bachelor in Statistics</div>
+        <div class="edu-uni">Government College University</div>
+        <div class="edu-period">Sep 2014 – Sep 2018 · Lahore, Pakistan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="max-w">
+    <div class="section-header fade-in">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Research Publications</h2>
+    </div>
+    <div class="pub-list">
+      <div class="pub-item fade-in">
+        <div class="pub-title">On improved dispersion control charts under ranked set schemes for normal and nonnormal processes</div>
+        <div class="pub-authors">Abbas, T., Zaman, B., Atir, A., Riaz, M., & Abbasi, S. A.</div>
+        <div class="pub-journal">Quality and Reliability Engineering International, 35(5), 1313–1341 · 2019</div>
+        <div class="pub-doi">DOI: https://doi.org/10.1002/qre.2531</div>
+      </div>
+      <div class="pub-item fade-in">
+        <div class="pub-title">Efficient control charting methodology based on Distance Weighted Mean for normal distribution</div>
+        <div class="pub-authors">Zaman, B., Raza, S. M. M., Iqbal, J., Shehzadi, N., Butt, M. M., & Riaz, M.</div>
+        <div class="pub-journal">Natural and Applied Sciences International Journal, 4(1), 1–16 · 2023</div>
+        <div class="pub-doi">DOI: https://doi.org/10.47264/idea.nasij/4.1.1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="max-w">
+    <div class="section-header fade-in">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Get In Touch</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="fade-in">
+        <p style="font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:1.2rem;">Connect with me</p>
+        <p style="font-size:15px;color:var(--ink2);line-height:1.85;text-align:justify;margin-bottom:2rem;">I'm open to full-time roles, freelance projects, and research collaborations. Feel free to reach out — I'd love to discuss how data can help your organization grow.</p>
+      </div>
+      <div class="contact-info fade-in">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-detail-label">Location</div>
+            <div class="contact-detail-val">Lahore, Punjab, Pakistan</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-val"><a href="mailto:bismazaman100@gmail.com" style="color:var(--accent);text-decoration:none;">your.email@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-detail-label">Phone</div>
+            <div class="contact-detail-val">+92 3164124368</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🔗</div>
+          <div>
+            <div class="contact-detail-label">Freelancer Profile</div>
+            <div class="contact-detail-val"><a href="https://www.freelancer.com/u/bimzaman000?frm=bimzaman000&sb=t" target="_blank" style="color:var(--accent);text-decoration:none;">freelancer.com/u/bimzaman000 ↗</a></div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Bisma Zaman · Data Analyst · Lahore, Pakistan</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
